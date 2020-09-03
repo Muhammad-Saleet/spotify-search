@@ -9,7 +9,7 @@ import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 
 export function LoginScreen ({ navigation }) {
-  const { login, setToken } = React.useContext(AppContext)
+  const { login } = React.useContext(AppContext)
 
   // Endpoint
   const discovery = {
@@ -21,7 +21,7 @@ export function LoginScreen ({ navigation }) {
     {
       responseType: ResponseType.Token,
       clientId: SpotifyCredentials.clientId,
-      scopes: ['user-read-email', 'playlist-modify-public'],
+      scopes: ['user-read-email'],
       // In order to follow the "Authorization Code Flow" to fetch token after authorizationEndpoint
       // this must be set to false
       usePKCE: false,
@@ -37,7 +37,7 @@ export function LoginScreen ({ navigation }) {
   React.useEffect(() => {
     if (response?.type === 'success') {
       const { access_token } = response.params
-      setToken(access_token)
+      login(access_token)
       // await deviceStorage.addToken(response.data.token, setToken)
     }
   }, [response])
@@ -46,7 +46,7 @@ export function LoginScreen ({ navigation }) {
     <ScreenContainer>
       <View>
         <Button
-          onPress={login}
+          onPress={() => login('fakeToken')}
           title="fake login"
           color="#841584"
         />

@@ -5,7 +5,7 @@ import * as React from 'react'
 import AuthStackNavigator from './AuthStackNavigator'
 import MainStackNavigator from './MainStackNavigator'
 
-export default function Navigation ({ token }) {
+export default function RootNavigator ({ token }) {
   return (
     <NavigationContainer>
       <RootStackNavigator token={token}/>

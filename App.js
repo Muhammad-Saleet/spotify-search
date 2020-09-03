@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { AppContext } from './constants/Context'
 
-import Navigation from './navigation/Navigation'
+import RootNavigator from './navigation/RootNavigator'
 
 export default function App () {
   const [token, setToken] = useState('')
@@ -17,9 +17,9 @@ export default function App () {
   }, [])
   */
 
-  async function login () {
+  async function login (token) {
     try {
-      setToken('fakeToken')
+      setToken(token)
     } catch (error) {
       console.log(error)
     }
@@ -43,7 +43,7 @@ export default function App () {
   return (
     <AppContext.Provider value={appContext}>
       <SafeAreaProvider>
-        <Navigation token={token}/>
+        <RootNavigator token={token}/>
         <StatusBar />
       </SafeAreaProvider>
     </AppContext.Provider>
