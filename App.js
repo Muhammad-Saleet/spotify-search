@@ -2,11 +2,16 @@ import { StatusBar } from 'expo-status-bar'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { AppContext } from './constants/Context'
+import { useFonts, Inter_400Regular } from '@expo-google-fonts/inter'
 
 import RootNavigator from './navigation/RootNavigator'
+import { AppLoading } from 'expo'
 
 export default function App () {
   const [token, setToken] = useState('')
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular
+  })
 
   /*
   useEffect(() => {
@@ -39,6 +44,8 @@ export default function App () {
     login,
     logout
   }
+
+  if (!fontsLoaded) return <AppLoading/>
 
   return (
     <AppContext.Provider value={appContext}>

@@ -7,6 +7,7 @@ import { SpotifyCredentials } from '../constants/Secrets'
 import { FontAwesome } from '@expo/vector-icons'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
+import Fonts from '../constants/Fonts';
 
 export function LoginScreen ({ navigation }) {
   const { login } = React.useContext(AppContext)
@@ -76,7 +77,8 @@ const styles = StyleSheet.create({
     color: Colors.spotifyGreen
   },
   text: {
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: Fonts.regular
   },
   spotifyButtonContainer: {
     marginTop: Math.round(Layout.window.height / 5),
