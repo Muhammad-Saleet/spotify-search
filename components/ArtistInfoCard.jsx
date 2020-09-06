@@ -9,7 +9,9 @@ function ArtistInfoCard ({ item, navigateToAlbums }) {
   function renderFollowersCount () {
     const followers = helpers.numFormatter(item.followerCount)
     return (
-      <Text style={styles.followersCountText}>
+      <Text style={styles.followersCountText}
+        allowFontScaling={false}
+        adjustsFontSizeToFit={false}>
         {`${followers} followers`}
       </Text>
     )
@@ -28,7 +30,10 @@ function ArtistInfoCard ({ item, navigateToAlbums }) {
       <View style={styles.detailsContainer0}>
 
         <View style={styles.detailsContainer1}>
-          <Text style={styles.nameText} numberOfLines={2}>
+          <Text style={styles.nameText}
+            numberOfLines={2}
+            allowFontScaling={false}
+            adjustsFontSizeToFit={false}>
             {item.name}
           </Text>
         </View>
