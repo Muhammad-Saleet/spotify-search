@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Image, Rating } from 'react-native-elements'
 import helpers from '../misc/helpers'
 import Fonts from '../constants/Fonts'
 import Colors from '../constants/Colors'
 
-export default function ArtistInfoCard ({ item, navigateToAlbums }) {
+function ArtistInfoCard ({ item, navigateToAlbums }) {
   function renderFollowersCount () {
     const followers = helpers.numFormatter(item.followerCount)
     return (
@@ -97,3 +97,5 @@ const styles = StyleSheet.create({
     marginTop: 5
   }
 })
+
+export default memo(ArtistInfoCard)
