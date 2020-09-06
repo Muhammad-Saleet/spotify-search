@@ -9,5 +9,6 @@ export default {
   green: '#51b552',
   spotifyGreen: '#1DB954',
   grey: '#888',
-  lightgrey: '#D3D3D3'
+  lightgrey: '#D3D3D3',
+  ultraLightgrey: '#f0f0f0'
 }

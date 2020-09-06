@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, Button, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 import { ScreenContainer } from '../components/ScreenContainer'
 import { AppContext } from '../constants/Context'
 import { makeRedirectUri, ResponseType, useAuthRequest } from 'expo-auth-session'
@@ -39,7 +39,6 @@ export function LoginScreen ({ navigation }) {
     if (response?.type === 'success') {
       const { access_token } = response.params
       login(access_token)
-      // await deviceStorage.addToken(response.data.token, setToken)
     }
   }, [response])
 
