@@ -8,6 +8,6 @@ export default {
   red: '#ff5959',
   green: '#51b552',
   spotifyGreen: '#1DB954',
-  grey: '#696969',
+  grey: '#888',
   lightgrey: '#D3D3D3'
 }

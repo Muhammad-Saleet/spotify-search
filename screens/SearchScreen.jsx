@@ -53,8 +53,8 @@ export function SearchScreen ({ navigation }) {
         popularity: 0
       }
 
-      if (item.images && item.images[2] && item.images[2].url) {
-        artist.imageSource = { uri: item.images[2].url }
+      if (item.images && item.images[1] && item.images[1].url) {
+        artist.imageSource = { uri: item.images[1].url }
       }
 
       if (item.followers && item.followers.total) {
