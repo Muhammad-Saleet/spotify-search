@@ -2,7 +2,6 @@
 
 This is a simple app built with React Native. The App allows users to search for an artist and retrieve information about his/her albums.
 ## How to test the app
-A demo of the app can be accessed here [https://muhammad-saleet.github.io/books/](https://muhammad-saleet.github.io/books/)
 
 On Android:
 1. Download the Expo App from the Play Store
