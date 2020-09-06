@@ -98,4 +98,8 @@ const styles = StyleSheet.create({
   }
 })
 
-export default memo(ArtistInfoCard)
+// component will not re-render if ids are equal
+function areEqual (prevProps, nextProps) {
+  return prevProps.item.id === nextProps.item.id
+}
+export default memo(ArtistInfoCard, areEqual)

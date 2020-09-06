@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { ActivityIndicator, FlatList, Platform, StyleSheet, View } from 'react-native'
+import { ActivityIndicator, FlatList, Platform, StyleSheet, Text, View } from 'react-native'
 import { AppContext } from '../constants/Context'
 import axios from 'axios'
 import Colors from '../constants/Colors'
 import Layout from '../constants/Layout'
 import CustomSearchBar from '../components/CustomSearchBar'
 import ArtistInfoCard from '../components/ArtistInfoCard'
+import Fonts from '../constants/Fonts'
 
 export function SearchScreen ({ navigation }) {
   const { token } = React.useContext(AppContext)
@@ -47,6 +48,7 @@ export function SearchScreen ({ navigation }) {
   function extractAndReformatData (artistList) {
     return artistList.map((item) => {
       const artist = {
+        id: item.id,
         name: item.name,
         imageSource: require('../assets/noimage.png'),
         followerCount: 0,
@@ -72,14 +74,16 @@ export function SearchScreen ({ navigation }) {
     if (!searchString) return
 
     setLoading(true)
+    setNoResults(false)
+
     const newData = await fetchData(0)
+    setLoading(false)
 
     if (newData.artists.total === 0) {
       setNoResults(true)
       return
     }
     setData(extractAndReformatData(newData.artists.items))
-    setLoading(false)
     setNextOffset(limit)
   }
 
@@ -92,18 +96,40 @@ export function SearchScreen ({ navigation }) {
     setNextOffset(prev => prev + limit)
   }
 
+  function navigateToAlbums (artistId) {
+    navigation.navigate('AlbumsScreen', artistId)
+  }
+
   function renderCard ({ item }) {
     return (
-      <ArtistInfoCard item={item}/>
+      <ArtistInfoCard item={item} navigateToAlbums={navigateToAlbums}/>
     )
   }
 
-  function renderLoader () {
-    return (
-      <View style={styles.loader}>
-        <ActivityIndicator size='large' />
-      </View>
-    )
+  function renderList () {
+    if (loading) {
+      return (
+        <View style={styles.loader}>
+          <ActivityIndicator size='large' />
+        </View>
+      )
+    } else if (noResults) {
+      return (
+        <View style={styles.noResultsContainer}>
+          <Text style={styles.noResults}> No results found</Text>
+        </View>
+      )
+    } else {
+      return (
+        <FlatList
+          data={data}
+          renderItem={renderCard}
+          keyExtractor={(item, index) => index.toString()}
+          onEndReached={handleLoadMore}
+          onEndReachedThreshold={0.5}
+        />
+      )
+    }
   }
 
   return (
@@ -116,16 +142,7 @@ export function SearchScreen ({ navigation }) {
       />
 
       <View style={styles.listContainer}>
-        {loading
-          ? renderLoader()
-          : <FlatList
-            data={data}
-            renderItem={renderCard}
-            keyExtractor={(item, index) => index.toString()}
-            onEndReached={handleLoadMore}
-            onEndReachedThreshold={0.5}
-          />
-        }
+        {renderList()}
       </View>
     </View>
   )
@@ -140,6 +157,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 25
   },
+  noResultsContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: Layout.window.height / 4
+  },
   loader: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -148,5 +170,10 @@ const styles = StyleSheet.create({
   footer: {
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  noResults: {
+    fontFamily: Fonts.regular,
+    fontSize: 14,
+    color: Colors.grey
   }
 })
