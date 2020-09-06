@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { SearchScreen } from '../screens/SearchScreen'
-import { ArtistScreen } from '../screens/ArtistScreen'
+import { AlbumsScreen } from '../screens/AlbumsScreen'
 
 const MainStack = createStackNavigator()
 export default function MainStackNavigator () {
@@ -18,9 +18,9 @@ export default function MainStackNavigator () {
         options={{ title: 'Search' }}
       />
       <MainStack.Screen
-        name='ArtistScreen'
-        component={ArtistScreen}
-        options={{ title: 'Artist' }}
+        name='AlbumsScreen'
+        component={AlbumsScreen}
+        options={{ title: 'Albums' }}
       />
     </MainStack.Navigator>
   )
