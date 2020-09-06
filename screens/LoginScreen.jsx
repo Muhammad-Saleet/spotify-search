@@ -7,7 +7,7 @@ import { SpotifyCredentials } from '../constants/Secrets'
 import { FontAwesome } from '@expo/vector-icons'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
-import Fonts from '../constants/Fonts';
+import Fonts from '../constants/Fonts'
 
 export function LoginScreen ({ navigation }) {
   const { login } = React.useContext(AppContext)
@@ -46,11 +46,6 @@ export function LoginScreen ({ navigation }) {
   return (
     <ScreenContainer>
       <View>
-        <Button
-          onPress={() => login('fakeToken')}
-          title="fake login"
-          color="#841584"
-        />
         <View style={styles.spotifyButtonContainer}>
           <FontAwesome.Button
             name="spotify"
