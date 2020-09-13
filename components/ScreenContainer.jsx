@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet } from 'react-native'
 import React from 'react'
 
-export function ScreenContainer ({ children }) {
+export default function ScreenContainer ({ children }) {
   return (
     <ScrollView style={ styles.container }>{children}</ScrollView>
   )
