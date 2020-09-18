@@ -2,6 +2,7 @@ import { loadAsync, makeRedirectUri } from 'expo-auth-session'
 
 export default {
   async login (clientId, redirectUri, scopes) {
+    console.log('logging in with google')
     const discovery = {
       authorizationEndpoint: 'https://accounts.spotify.com/authorize',
       tokenEndpoint: 'https://accounts.spotify.com/api/token'
@@ -16,7 +17,7 @@ export default {
       usePKCE: false,
       // For usage in managed apps using the proxy
       redirectUri: makeRedirectUri({
-      // For usage in bare and standalone
+        // For usage in bare and standalone
         native: redirectUri
       })
     }
@@ -36,7 +37,7 @@ export default {
         return { error: 'login interrupted' }
       }
     } catch (e) {
-      return { error: `facebook login failed: ${e}` }
+      return { error: `spotify login failed: ${e}` }
     }
   }
 }

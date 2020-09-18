@@ -15,7 +15,6 @@ export default function CustomSearchBar ({ updateSearchString, searchString, sea
       inputStyle={styles.input}
       containerStyle={styles.container}
     />
-
   )
 }
 

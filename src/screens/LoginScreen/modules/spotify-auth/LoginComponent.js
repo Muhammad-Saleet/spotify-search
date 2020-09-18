@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import AuthServices from './AuthServices'
-import LoginButton from './LoginButton'
+import LoginView from './LoginView'
+import config from '../../../../../config'
 
-export function LoginComponent ({
-  clientId,
-  redirectUri,
-  scopes,
+export default function LoginComponent ({
   onSuccess,
   onFailure
 }) {
@@ -14,9 +12,9 @@ export function LoginComponent ({
   async function login () {
     setIsLoading(true)
     const response = await AuthServices.login(
-      clientId,
-      redirectUri,
-      scopes
+      config.spotifyCredentials.clientId,
+      config.spotifyCredentials.redirectUri,
+      config.spotifyCredentials.scopes
     )
     setIsLoading(false)
 
@@ -33,6 +31,6 @@ export function LoginComponent ({
   }
 
   return (
-    <LoginButton onPress={login} loading={isLoading}/>
+    <LoginView onPress={login} loading={isLoading}/>
   )
 }

@@ -1,10 +1,13 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { AppContext } from './constants/Context'
+import { AppContext } from './src/constants/Context'
 import { useFonts, Inter_400Regular } from '@expo-google-fonts/inter'
+import * as Localization from 'expo-localization'
+import i18n from 'i18n-js'
+import en from './localisation/en'
 
-import RootNavigator from './navigation/RootNavigator'
+import RootNavigator from './src/navigation/RootNavigator'
 import { AppLoading } from 'expo'
 
 export default function App () {
@@ -13,14 +16,12 @@ export default function App () {
     Inter_400Regular
   })
 
-  /*
-  useEffect(() => {
-    const loadAppState = async () => {
-      await deviceStorage.loadToken(setToken)
-    }
-    loadAppState()
-  }, [])
-  */
+  i18n.locale = Localization.locale
+  i18n.fallbacks = true
+
+  i18n.translations = {
+    en: en
+  }
 
   async function login (token) {
     try {
@@ -38,7 +39,15 @@ export default function App () {
     }
   }
 
+  const config = {
+    auth: {
+      google: false,
+      spotify: true
+    }
+  }
+
   const appContext = {
+    config,
     token,
     setToken,
     login,

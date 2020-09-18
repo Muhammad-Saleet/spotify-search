@@ -46,7 +46,7 @@ export function AlbumsScreen ({ navigation, route }) {
       const album = {
         id: item.id,
         name: item.name,
-        imageSource: require('../assets/noimage.png'),
+        imageSource: require('../../assets/noimage.png'),
         artists: [],
         releaseDate: '',
         totalTracks: 0,
