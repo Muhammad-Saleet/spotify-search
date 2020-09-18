@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Platform, StyleSheet, View } from 'react-native'
-import { AppContext } from '../constants/Context'
-import Colors from '../constants/Colors'
-import CustomSearchBar from '../components/CustomSearchBar'
-import ArtistInfoCard from '../components/ArtistInfoCard'
-import FlatList from '../components/core-components/FlatList'
-import SpotifyAPI from '../services/SpotifyAPI'
+import { AppContext } from '../../constants/Context'
+import Colors from '../../constants/Colors'
+import CustomSearchBar from '../../components/CustomSearchBar'
+import ArtistInfoCard from '../../components/ArtistInfoCard'
+import FlatList from '../../components/core-components/FlatList'
+import SpotifyAPI from '../../services/SpotifyAPI'
 
 export function SearchScreen ({ navigation }) {
   const { token } = React.useContext(AppContext)
@@ -31,7 +31,7 @@ export function SearchScreen ({ navigation }) {
       const artist = {
         id: item.id,
         name: item.name,
-        imageSource: require('../../assets/noimage.png'),
+        imageSource: require('../../../assets/noimage.png'),
         followerCount: 0,
         popularity: 0
       }

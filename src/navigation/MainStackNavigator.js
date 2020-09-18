@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { SearchScreen } from '../screens/SearchScreen'
+import { SearchScreen } from '../screens/SearchScreen/SearchScreen'
 import { AlbumsScreen } from '../screens/AlbumsScreen'
 
 const MainStack = createStackNavigator()
